@@ -1,5 +1,9 @@
 # How to set up Jenkins
 
+-Following the diagram we will create a SSH key to connect GitHub with Jenkins so code can be read by Jenkins in a secure way. This is part of the CI process. 
+-For a job created in Jenkins, it will be able to track any changes to the GitHub repo referred to in it's configuration settings.
+![CI_CD](diagram_CI_CD.png)
+
 # Create a Jenkins key
 1. `cd ~/.ssh` : Go into your .ssh folder
 2. `ssh keygen -t rsa -b 4096 -C "your_github_email.com"` replace the github email with your actual email
