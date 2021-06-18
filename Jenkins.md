@@ -55,5 +55,17 @@ Max builds- select as 3.
 17. In your `Build history` make sure it has turned `blue` and it has successfully been able to get your code and run the commands.
 
 
-# Creating Webhook
-Creating a webhook will trigger Jenkins to run the project attached to GitHub repository with any new commits pushed.
+## Creating Webhook
+Creating a webhook will trigger Jenkins to run the project when changes are committed and pushed to your GitHub repository.
+1. In Jenkins-> your project (`jaspreet_testing_jenkins`) -> Configure (side tab) -> make sure you have your repository set in GitHub Project (steps 1-3 of Configure)
+- So basically when changes are made to GitHub repo (stated in GitHub Project) you want this Jenkins project to be trigurred and run.
+- step 10 from above should be followed to ensure project is triggured
+2. In GitHub repo `Devops_bootcamp` -> settings -> side tab- click Webhooks -> Add webhook -> 
+-`Payload_url` -> enter jenkins url (this is your id of jenkins:port which jenkins is running on/enter github-webhook after the url/)`http://some_numbers_seperated_with_dots:8080/github-webhook/` (ensure the ending /)  
+- `Content-type` -> select `application/json`
+- `Which events would you like to trigger` -> make sure the `Just the push event is selected` (if you want to add more triggers you can select `Let me select individual events`)
+- `Active` -> should be selected
+3. Click Add webhook
+4. Your should see the webhook appear in your list of webhooks.
+5. If you go to your GitHub repo and make changes a file (any file, iv'e choses `Jenkins.md`) -> Then commit those changes -> You should see your project in Jenkins being built.
+
