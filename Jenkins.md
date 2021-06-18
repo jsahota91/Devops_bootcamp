@@ -6,11 +6,11 @@
 
 # Create a Jenkins key
 1. `cd ~/.ssh` : Go into your .ssh folder
-2. `ssh keygen -t rsa -b 4096 -C "your_github_email.com"` replace the github email with your actual email
+2. `ssh-keygen -t rsa -b 4096 -C "your_github_email.com"` replace the github email with your actual email
 3. `jaspreetjenkins` - file name for the ssh key
 4. `passphrase` - you don't need to enter anything, hit enter x2
 5. your keys should load
-6. `ls` : you should see `jaspreetjenkins.pub` = public key and `jaspreetjenkins` = private key
+6. `ls` : you should see `newjaspreetjenkins.pub` = public key and `newjaspreetjenkins` = private key
 - Public key ending in .pub will be used in GitHub and Private key in Jenkins to clone your repo.
 - If the correct key is not passed into GitHub or Jenkins the ssh connection from GitHub to Jenkins will fail. We have ssh key to establish a connection between Jenkins and GitHub.
 
@@ -30,14 +30,14 @@ Max builds- select as 3.
 2. `GitHub Project`: Go to GitHUB -> your repo -> under code select `HTTP` and copy your githublink `https://github.com/jaspreet/...` Paste link in Jenkins GitHub Project heading (make sure it is selected)
 - Doing this we are instructing Jenkins to go and get the code from GitHub repo.
 3. Go back to GitHub -> your repo -> under code select `SSH` and copy the ssh link `git@github.com:jaspreet...`
-4. In Jenkins Configure -> Source Code Management -> Repository URL -> paste the SSH link.
+4. In Jenkins Configure -> Source Code Management -> Repository URL -> paste the SSH link. (HTTP link if it doesnt work).
 5. For Credentials click `Add`-> Select `Jenkins` -> 
 - Kind : select `SSH Username and private key`
-- Username : `jaspreetjenkins` give a name for your key
-- Select Private key: from git bash -> in .ssh folder -> `nano jaspreetjenkins` -> copy the private key
+- Username : `newjaspreetjenkinsprivate` give a name for your key
+- Select Private key: from git bash -> in .ssh folder -> `nano newjaspreetjenkins` -> copy the private key
 - Paste in the private key -> Then click `Add`
 6. In GitHub -> in your repo -> go to settings -> click `Deploy keys` in side tab -> Click `Add Deploy key`
-7. In GitBash -> in .ssh folder -> `cat jaspreetjenkins.pub` -> copy it
+7. In GitBash -> in .ssh folder -> `cat newjaspreetjenkins.pub` -> copy it
 8. Paste the public key in GitHub as a deploy key and give a title for the key -> when prompted enter GitHub password
 - You should see the key in the repo now.
 9. In Jenkins -> Source Code Management -> Credentials -> Select your private key from the drop down.
